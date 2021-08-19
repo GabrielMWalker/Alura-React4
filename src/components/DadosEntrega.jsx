@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 
-function DadosEntrega() {
-  const [cep, setCep] = useState("");
+function DadosEntrega({ aoEnviar, aoVoltar }) {
   const [endereco, setEndereco] = useState("");
   const [numero, setNumero] = useState("");
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
+  const [cep, setCep] = useState("");
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        aoEnviar({ endereco, numero, estado, cidade, cep });
+      }}
+    >
       <TextField
         id="endereco"
         label="Endereço"
@@ -70,7 +75,24 @@ function DadosEntrega() {
           setCep(event.target.value);
         }}
       />
-      <Button type="submit" variant="contained" color="primary" fullWidth>
+      <Button
+        type="button"
+        variant="contained"
+        color="primary"
+        onClick={(event) => {
+          event.preventDefault();
+          aoVoltar();
+        }}
+      >
+        Voltar
+      </Button>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        fullWidth
+        margin="normal"
+      >
         Finalizar Cadastro
       </Button>
     </form>

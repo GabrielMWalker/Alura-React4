@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function DadosPessoais({ aoEnviar, validarCpf }) {
+function DadosPessoais({ aoEnviar, validarCpf, aoVoltar }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -21,6 +21,7 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
         label="Nome"
         variant="outlined"
         fullWidth
+        required
         margin="normal"
         value={nome}
         onChange={(event) => {
@@ -32,6 +33,7 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
         label="Sobrenome"
         variant="outlined"
         fullWidth
+        required
         margin="normal"
         value={sobrenome}
         onChange={(event) => {
@@ -47,6 +49,7 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
         helperText={erros.cpf.texto}
         id="cpf"
         label="CPF"
+        required
         variant="outlined"
         fullWidth
         margin="normal"
@@ -81,7 +84,17 @@ function DadosPessoais({ aoEnviar, validarCpf }) {
         }
         label="Novidades"
       />
-
+      <Button
+        type="button"
+        variant="contained"
+        color="primary"
+        onClick={(event) => {
+          event.preventDefault();
+          aoVoltar();
+        }}
+      >
+        Voltar
+      </Button>
       <Button type="submit" variant="contained" color="primary">
         Cadastrar
       </Button>
