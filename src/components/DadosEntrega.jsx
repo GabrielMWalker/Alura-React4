@@ -10,23 +10,13 @@ function DadosEntrega() {
   return (
     <form>
       <TextField
-        id="cep"
-        label="CEP"
-        type="number"
-        variant="outlined"
-        value={cep}
-        margin="normal"
-        onChange={(event) => {
-          setCep(event.target.value);
-        }}
-      />
-      <TextField
         id="endereco"
         label="Endereço"
         type="text"
         variant="outlined"
         margin="normal"
         fullWidth
+        required
         value={endereco}
         onChange={(event) => {
           setEndereco(event.target.value);
@@ -37,6 +27,7 @@ function DadosEntrega() {
         label="Numero"
         type="number"
         variant="outlined"
+        required
         value={numero}
         margin="normal"
         onChange={(event) => {
@@ -46,6 +37,7 @@ function DadosEntrega() {
       <TextField
         id="estado"
         label="Estado"
+        required
         type="text"
         variant="outlined"
         margin="normal"
@@ -57,12 +49,25 @@ function DadosEntrega() {
       <TextField
         id="cidade"
         label="Cidade"
+        required
         type="text"
         variant="outlined"
         margin="normal"
         value={cidade}
         onChange={(event) => {
           setCidade(event.target.value);
+        }}
+      />
+      <TextField
+        id="cep"
+        label="CEP"
+        type="number"
+        required
+        variant="outlined"
+        value={cep}
+        margin="normal"
+        onChange={(event) => {
+          setCep(event.target.value);
         }}
       />
       <Button type="submit" variant="contained" color="primary" fullWidth>

@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 
-function DadosUsuarios() {
+function DadosUsuarios({ aoEnviar }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        aoEnviar({ email, password });
+      }}
+    >
       <TextField
         id="email"
         label="Email"
         type="email"
         variant="outlined"
         fullWidth
+        required
         value={email}
         margin="normal"
         onChange={(event) => {
@@ -26,6 +32,7 @@ function DadosUsuarios() {
         variant="outlined"
         margin="normal"
         fullWidth
+        required
         value={password}
         onChange={(event) => {
           setPassword(event.target.value);
