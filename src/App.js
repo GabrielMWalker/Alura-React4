@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import FormularioCadastro from "./components/FormularioCadastro";
+import FormularioCadastro from "./components/";
 import { Container, Typography } from "@material-ui/core";
+import { validarCpf, validarSenha } from "./models/cadastro.js";
 
 import "./App.css";
+import ValidacoesCadastro from "./contexts/ValidacoesCadastro";
 
 class App extends Component {
   render() {
@@ -11,7 +13,14 @@ class App extends Component {
         <Typography variant="h3" component="h1" align="center">
           Formulário de Cadastro
         </Typography>
-        <FormularioCadastro aoEnviar={aoEnviarForm} validarCpf={validarCpf} />
+        <ValidacoesCadastro.Provider
+          value={{
+            cpf: validarCpf,
+            password: validarSenha,
+          }}
+        >
+          <FormularioCadastro aoEnviar={aoEnviarForm} />
+        </ValidacoesCadastro.Provider>
       </Container>
     );
   }
@@ -19,14 +28,6 @@ class App extends Component {
 
 function aoEnviarForm(dados) {
   console.log(dados);
-}
-
-function validarCpf(cpf) {
-  if (cpf.length !== 11) {
-    return { valido: false, texto: "CPF deve ter 11 digitos!" };
-  } else {
-    return { valido: true, texto: "" };
-  }
 }
 
 export default App;

@@ -18,6 +18,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
         id="endereco"
         label="Endereço"
         type="text"
+        name="endereco"
         variant="outlined"
         margin="normal"
         fullWidth
@@ -30,6 +31,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
       <TextField
         id="numero"
         label="Numero"
+        name="numero"
         type="number"
         variant="outlined"
         required
@@ -42,6 +44,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
       <TextField
         id="estado"
         label="Estado"
+        name="estado"
         required
         type="text"
         variant="outlined"
@@ -54,6 +57,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
       <TextField
         id="cidade"
         label="Cidade"
+        name="cidade"
         required
         type="text"
         variant="outlined"
@@ -67,6 +71,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
         id="cep"
         label="CEP"
         type="number"
+        name="cep"
         required
         variant="outlined"
         value={cep}
@@ -78,6 +83,7 @@ function DadosEntrega({ aoEnviar, aoVoltar }) {
       <Button
         type="button"
         variant="contained"
+        name="voltar"
         color="primary"
         onClick={(event) => {
           event.preventDefault();

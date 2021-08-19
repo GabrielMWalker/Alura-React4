@@ -4,7 +4,7 @@ import DadosPessoais from "./DadosPessoais";
 import DadosUsuarios from "./DadosUsuarios";
 import DadosEntrega from "./DadosEntrega";
 
-function FormularioCadastro({ aoEnviar, validarCpf }) {
+function FormularioCadastro({ aoEnviar }) {
   const [etapaAtual, setEtapaAtual] = useState(0);
   const [dadosColetados, setDados] = useState({});
   useEffect(() => {
@@ -15,11 +15,7 @@ function FormularioCadastro({ aoEnviar, validarCpf }) {
 
   const formularios = [
     <DadosUsuarios aoEnviar={coletarDados} />,
-    <DadosPessoais
-      aoEnviar={coletarDados}
-      aoVoltar={anterior}
-      validarCpf={validarCpf}
-    />,
+    <DadosPessoais aoEnviar={coletarDados} aoVoltar={anterior} />,
     <DadosEntrega aoEnviar={coletarDados} aoVoltar={anterior} />,
     <Typography variant="h5" align="center">
       Obrigado pelo cadastro
